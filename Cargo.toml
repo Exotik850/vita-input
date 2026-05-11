@@ -2,6 +2,9 @@
 name = "vita-input"
 version = "0.1.0"
 edition = "2021"
+description = "A crate for handling input on the PlayStation Vita."
+repository = "https://github.com/exotik850/vita-input"
+license = "MIT"
 
 [dependencies]
 glam = { version = "0.32.1", optional = true }
