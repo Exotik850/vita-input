@@ -8,8 +8,11 @@ license = "MIT"
 
 [dependencies]
 glam = { version = "0.32.1", optional = true }
-vitasdk-sys = { version = "0.3", features = ["SceCtrl_stub"] }
+vitasdk-sys = { version = "0.3" }
 
 [features]
+default = ["controller", "touch"]
 glam = ["dep:glam"]
 bindgen = ["vitasdk-sys/bindgen"]
+controller = ["vitasdk-sys/SceCtrl_stub"]
+touch = ["vitasdk-sys/SceTouch_stub"]
