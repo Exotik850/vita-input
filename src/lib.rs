@@ -8,9 +8,9 @@
 //! ### Controller
 //!
 //! ```ignore
-//! use vita_input::controller::{VitaInput, Button, Joystick, Axis};
+//! use vita_input::controller::{ControllerInput, Button, Joystick, Axis};
 //!
-//! let input = VitaInput::poll();
+//! let input = ControllerInput::poll();
 //!
 //! if input.is_pressed(Button::Cross) {
 //!     // jump!
@@ -39,14 +39,10 @@
 
 #[cfg(feature = "controller")]
 pub mod controller;
+#[cfg(feature = "controller")]
+pub use crate::controller::{Button, Joystick, ControllerInput};
 
 #[cfg(feature = "touch")]
 pub mod touch;
-
-pub mod prelude {
-    #[cfg(feature = "controller")]
-    pub use crate::controller::{Button, Joystick, VitaInput};
-
-    #[cfg(feature = "touch")]
-    pub use crate::touch::{TouchInput, TouchPoint};
-}
+#[cfg(feature = "touch")]
+pub use crate::touch::{TouchInput, TouchPoint};

@@ -8,15 +8,15 @@ Install `vita-input` by adding it to your projects `Cargo.toml` file:
 
 ```toml
 [dependencies]
-vita-input = "0.1"
+vita-input = "0.2"
 ```
 
 ### Controller usage
 
 ```rust
-use vita_input::controller::{VitaInput, Button, Joystick, Axis};
+use vita_input::controller::{ControllerInput, Button, Joystick, Axis};
 
-let input = VitaInput::poll();
+let input = ControllerInput::poll();
 
 if input.is_pressed(Button::Cross) {
     // jump

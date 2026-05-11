@@ -124,13 +124,13 @@ pub enum SamplingMode {
     AnalogWide = 2,
 }
 
-// ── VitaInput ─────────────────────────────────────────────────────────────
+// ── ControllerInput ─────────────────────────────────────────────────────────────
 
 /// A snapshot of the Vita's controller state.
 ///
-/// Obtain one by calling [`VitaInput::poll`].
+/// Obtain one by calling [`ControllerInput::poll`].
 #[derive(Clone, Copy, Debug, PartialEq)]
-pub struct VitaInput {
+pub struct ControllerInput {
     /// Raw button bit-mask (see [`Button`]).
     pub buttons: u32,
     /// Normalised left stick.
@@ -143,7 +143,7 @@ pub struct VitaInput {
     pub timestamp: u64,
 }
 
-impl VitaInput {
+impl ControllerInput {
     // ── polling ────────────────────────────────────────────────────────
 
     /// Poll the controller on port 0 and return a snapshot of its state.
@@ -226,7 +226,7 @@ impl VitaInput {
 
     // ── internals ──────────────────────────────────────────────────────
 
-    /// Build a `VitaInput` from a raw `SceCtrlData`.
+    /// Build a `ControllerInput` from a raw `SceCtrlData`.
     fn from_raw(raw: SceCtrlData) -> Self {
         Self {
             buttons: raw.buttons,
