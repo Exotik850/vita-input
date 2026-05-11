@@ -1,0 +1,12 @@
+[package]
+name = "vita-input"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+glam = { version = "0.32.1", optional = true }
+vitasdk-sys = { version = "0.3", features = ["SceCtrl_stub"] }
+
+[features]
+glam = ["dep:glam"]
+bindgen = ["vitasdk-sys/bindgen"]
