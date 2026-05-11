@@ -275,6 +275,9 @@ pub struct TouchInput {
     points: [TouchPoint; 8],
 }
 
+/// Guard that manages the lifecycle of touch sampling for a given port.
+/// 
+/// Created by [`TouchInput::start_sampling`], which starts sampling on the given port and returns this guard.  When dropped, the guard will stop sampling on that port.
 pub struct TouchSampleGaurd {
     port: TouchPort,
 }

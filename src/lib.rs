@@ -45,4 +45,4 @@ pub use crate::controller::{Button, Joystick, ControllerInput};
 #[cfg(feature = "touch")]
 pub mod touch;
 #[cfg(feature = "touch")]
-pub use crate::touch::{TouchInput, TouchPoint};
+pub use crate::touch::{TouchInput, TouchPoint, TouchSampleGaurd, TouchPort, TouchPanelInfo, TouchIter};
