@@ -1,4 +1,3 @@
-
 use core::fmt;
 use vitasdk_sys::{
     sceCtrlPeekBufferPositive, sceCtrlSetSamplingMode, SceCtrlData, SCE_CTRL_MODE_ANALOG,
@@ -161,6 +160,22 @@ impl ControllerInput {
         let ret = unsafe { sceCtrlPeekBufferPositive(0, &mut raw, 1) };
         assert!(ret >= 0, "sceCtrlPeekBufferPositive failed: {ret}");
 
+        Self::from_raw(raw)
+    }
+
+    /// Read the controller state and remove it from the input buffer.
+    ///
+    /// This is a **blocking** call.  It uses `sceCtrlReadBufferPositive`
+    /// internally, which waits until at least one input event is available before returning.
+    ///
+    /// # Panics
+    ///
+    /// Panics if the underlying syscall returns an error code.  In practice
+    /// this should never happen on a healthy device.
+    pub fn read() -> Self {
+        let mut raw = unsafe { core::mem::zeroed::<SceCtrlData>() };
+        let ret = unsafe { vitasdk_sys::sceCtrlReadBufferPositive(0, &mut raw, 1) };
+        assert!(ret >= 0, "sceCtrlReadBufferPositive failed: {ret}");
         Self::from_raw(raw)
     }
 
